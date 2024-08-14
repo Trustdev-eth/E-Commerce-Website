@@ -6,12 +6,12 @@ export interface User {
     _id?: string;
     firstName: string;
     lastName: string;
-    role: Role | null;
+    role: Role | string;
     birthday?: Date;
     address?: string;
     city?: string;
     state?: string;
-    postalCode?: Number;
+    postalCode?: number;
     country?: string;
     phone?: string;
     email: string;
