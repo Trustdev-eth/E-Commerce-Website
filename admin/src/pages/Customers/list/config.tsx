@@ -31,12 +31,16 @@ export const tableConfig = [
     {
         label: "Address",
         render: (row: RowProps) =>
-            row.address && row.city && row.postalCode && row.country ? (
+            row.address &&
+            row.address.city &&
+            row.address.street &&
+            row.address.postalCode &&
+            row.address.country ? (
                 <Address
-                    address={row.address}
-                    city={row.city}
-                    postalCode={row.postalCode}
-                    country={row.country}
+                    address={row.address.street}
+                    city={row.address.city}
+                    postalCode={row.address.postalCode}
+                    country={row.address.country}
                 />
             ) : (
                 <span>No address</span>
