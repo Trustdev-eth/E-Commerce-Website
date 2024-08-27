@@ -20,4 +20,15 @@ export interface Summary {
         thisYear: number;
         lastYear: number;
     };
+    visitors: {
+        total: number;
+        loggedIn: number;
+        anonymous: number;
+        thisWeek: number;
+        lastWeek: number;
+        thisMonth: number;
+        lastMonth: number;
+        thisYear: number;
+        lastYear: number;
+    };
 }
