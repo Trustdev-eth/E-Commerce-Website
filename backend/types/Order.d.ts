@@ -21,10 +21,17 @@ export interface Order {
         | "delivered"
         | "cancelled";
     total: number;
-    paymentMethod: string;
-    paymentStatus?: string;
-    deliveryMethod: string;
+    paymentMethod: "cash" | "stripe" | "paypal";
+    paymentStatus?:
+        | "unpaid"
+        | "paid"
+        | "failed"
+        | "refunded"
+        | "completed"
+        | "canceled";
+    deliveryMethod: "pickup" | "delivery";
     deliveryCost: number;
+    additionalInfo?: string;
     createdAt: Date;
     updatedAt: Date;
 }
