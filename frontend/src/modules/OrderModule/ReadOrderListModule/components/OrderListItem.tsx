@@ -7,10 +7,9 @@ import { Product } from "@/types/Product";
 interface OrderListItemProps {
     data?: Order;
     isLoading: boolean;
-    isDetails?: boolean;
 }
 
-const OrderListItem = ({ data, isLoading, isDetails }: OrderListItemProps) => {
+const OrderListItem = ({ data, isLoading }: OrderListItemProps) => {
     const navigate = useNavigate();
 
     return (
@@ -94,17 +93,9 @@ const OrderListItem = ({ data, isLoading, isDetails }: OrderListItemProps) => {
                             )}
                         </p>
                     </div>
-                    <div
-                        className={
-                            isDetails
-                                ? "grid grid-cols-2 gap-4"
-                                : "flex space-x-4"
-                        }
-                    >
+                    <div className="flex space-x-4">
                         {(isLoading
                             ? Array.from(new Array(2))
-                            : isDetails
-                            ? data!.items
                             : data!.items.length > 1
                             ? data!.items.slice(0, 2)
                             : data!.items
@@ -119,25 +110,6 @@ const OrderListItem = ({ data, isLoading, isDetails }: OrderListItemProps) => {
                                         width={180}
                                         height={220}
                                     />
-                                ) : isDetails ? (
-                                    <Link
-                                        to={`/product/${
-                                            (item.product as Product)._id
-                                        }`}
-                                        className="max-w-[150px] sm:max-w-[180px] md:max-w-[220px]"
-                                    >
-                                        <img
-                                            src={
-                                                (item.product as Product)
-                                                    .imageUrl[0]
-                                            }
-                                            loading="lazy"
-                                            className="max-w-full object-cover object-top md:object-center"
-                                            alt={
-                                                (item.product as Product).title
-                                            }
-                                        />
-                                    </Link>
                                 ) : index === 1 && data!.items.length > 2 ? (
                                     <div className="relative max-w-[150px] sm:max-w-[180px] md:max-w-[220px]">
                                         <img
