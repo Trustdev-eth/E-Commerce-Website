@@ -1,3 +1,4 @@
+import ProductSelectionForm from "@/forms/ProductSelectionForm";
 import type { Order } from "@/types/Order";
 import type { StepProps } from "@/types/Step";
 
@@ -6,7 +7,7 @@ interface SelectItemsStepProps extends StepProps {
 }
 
 const SelectItemsStep = ({ data }: SelectItemsStepProps) => {
-    return <div></div>;
+    return <ProductSelectionForm items={data?.items || []} />;
 };
 
 export default SelectItemsStep;

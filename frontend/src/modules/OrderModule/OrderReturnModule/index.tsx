@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import { useGetOrderByIdQuery } from "@/store";
+import { useGetOrderByIdQuery, useAddReturnMutation } from "@/store";
 import DefaultLayout from "@/layouts/DefaultLayout";
 import StepperForm from "@/components/StepperForm";
 import ReasonStep from "./components/ReasonStep";
@@ -7,11 +7,19 @@ import ReturnMethodStep from "./components/ReturnMethodStep";
 import SummaryStep from "./components/SummaryStep";
 import SelectItemsStep from "./components/SelectItemsStep";
 import type { StepProps } from "@/types/Step";
+import type { CreateReturnOrder } from "@/types/Returns";
+
+interface ReturnFormValues {
+    reason?: string;
+    otherReason?: string;
+    deliveryMethod: string;
+    selectedProducts: string[];
+}
 
 const OrderReturnModule = () => {
     const { id } = useParams();
-
-    const { data, isLoading, isError } = useGetOrderByIdQuery(id || "");
+    const { data } = useGetOrderByIdQuery(id || "");
+    const [addReturn] = useAddReturnMutation();
 
     const steps = [
         {
@@ -34,9 +42,24 @@ const OrderReturnModule = () => {
         },
     ];
 
+    const handleSubmit = async (values: ReturnFormValues) => {
+        const { reason, otherReason, deliveryMethod, selectedProducts } =
+            values;
+
+        const output: CreateReturnOrder = {
+            _order: id!,
+            returnedItems: selectedProducts,
+            returnReason: reason || otherReason || "other",
+        };
+
+        console.log(output);
+
+        await addReturn(output);
+    };
+
     return (
         <DefaultLayout marginY={false}>
-            <StepperForm content={steps} />
+            <StepperForm content={steps} onSubmit={handleSubmit} />
         </DefaultLayout>
     );
 };
