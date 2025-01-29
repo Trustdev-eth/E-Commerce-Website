@@ -1,4 +1,4 @@
-import { Shipment } from "types/Order";
+import { Shipment } from "@/types/Order";
 
 export const processShipments = (shipments: Shipment[]) => {
     if (!Array.isArray(shipments)) {
@@ -11,17 +11,12 @@ export const processShipments = (shipments: Shipment[]) => {
         0
     );
 
-    if (shipmentCount === 1) {
-        return {
-            shipment: shipments[0],
-            shipmentTotal,
-            shipmentCount,
-        };
-    }
+    const isMoreThanOne = shipmentCount > 1;
 
     return {
         shipments,
         shipmentTotal,
         shipmentCount,
+        isMoreThanOne,
     };
 };
