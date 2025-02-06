@@ -5,5 +5,7 @@ export const orderStatuses: Record<NonNullable<Order["status"]>, string> = {
     confirmed: "Confirmed",
     shipped: "Shipped",
     delivered: "Delivered",
+    "pending payment": "Pending Payment",
     canceled: "Canceled",
+    returned: "Returned",
 };
