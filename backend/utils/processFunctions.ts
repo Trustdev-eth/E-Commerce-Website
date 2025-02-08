@@ -7,25 +7,37 @@ export const processShipments = (shipments: Shipment[]) => {
 
     const shipmentCount = shipments.length;
     const shipmentTotal = shipments.reduce(
-        (acc, shipment) => acc + shipment.shippingCost,
+        (acc, shipment) => acc + (shipment.shippingCost || 0),
         0
     );
 
-    if (shipmentCount === 1) {
-        return {
-            shipment: shipments[0],
-            shipmentTotal,
-            shipmentCount,
-        };
-    }
+    const isMoreThanOne = shipmentCount > 1;
 
     return {
         shipments,
         shipmentTotal,
         shipmentCount,
+        isMoreThanOne,
     };
 };
 
 export const processPayments = (payments: Payment[]) => {
-    return {};
+    if (!Array.isArray(payments)) {
+        throw new Error("Invalid payments data: Expected an array.");
+    }
+
+    const paymentCount = payments.length;
+    const paymentTotal = payments.reduce(
+        (acc, payment) => acc + payment.amount,
+        0
+    );
+
+    const isMoreThanOne = paymentCount > 1;
+
+    return {
+        payments,
+        paymentTotal,
+        paymentCount,
+        isMoreThanOne,
+    };
 };
