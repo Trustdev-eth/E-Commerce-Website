@@ -12,7 +12,7 @@ export const updatePayment = async (
     const { id } = req.params;
 
     if (!isValidObjectId(id)) {
-        return res.status(400).json({ error: "Invalid order ID format" });
+        return res.status(400).json({ error: "Invalid payment ID format" });
     }
 
     const updates = _.omit(req.body, "_id");
