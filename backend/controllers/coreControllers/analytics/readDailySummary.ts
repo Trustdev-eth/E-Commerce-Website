@@ -18,7 +18,13 @@ export const getDailySummary = async (
             if (!date && !today && !last30Days)
                 return res
                     .status(400)
-                    .json(errorResponse(null, "Date is required"));
+                    .json(
+                        errorResponse(
+                            null,
+                            "One of the parameters is required",
+                            400
+                        )
+                    );
 
             const targetDate = new Date(
                 today || !date ? new Date() : new Date(date)
