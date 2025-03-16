@@ -22,6 +22,7 @@ interface DailySummary {
         referral: number;
         organic: number;
     };
+    eventCount: number;
     orders: number;
     earnings: number;
     uniqueUsers: number;
@@ -39,9 +40,9 @@ interface ProductDailySummary {
 
 interface DailySummaryQueryParams extends ParsedQs {
     date?: Date;
-    all?: boolean;
     today?: boolean;
     last30Days?: boolean;
+    last6Months?: boolean;
 }
 
 export { Event, DailySummary, ProductDailySummary, DailySummaryQueryParams };
