@@ -5,3 +5,8 @@ export interface StepProps {
     handleReset: () => void;
     formValues: any;
 }
+
+export interface StepElement {
+    label: string;
+    element: (props: StepProps) => JSX.Element;
+}
