@@ -5,7 +5,7 @@
 #### Step 1: Clone the repository
 
 ```bash
-git clone https://github.com/kalczugag/ecommerce.git
+git clone https://github.com/MohamedSSalahh/ecommerce.git
 ```
 
 ```bash

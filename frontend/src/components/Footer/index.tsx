@@ -27,7 +27,7 @@ const Footer = () => {
                         <span className="flex flex-wrap">
                             <p>Phone: </p>
                             <p>&nbsp;</p>
-                            <p>+48 123 456 789</p>
+                            <p>+20 01280603382</p>
                         </span>
                         <span className="flex flex-wrap">
                             <p>Email: </p>
